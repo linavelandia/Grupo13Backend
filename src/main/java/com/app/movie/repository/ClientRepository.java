@@ -11,10 +11,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author Andres
- */
 @Repository
 public class ClientRepository {
     
@@ -29,11 +25,11 @@ public class ClientRepository {
         Optional<Client> response= repository.findById(id);
         return response;
     }
-    
+
     public Boolean existsById(String id){
         return repository.existsById(id);
     }
-    
+
     public void deleteById(String id){
         repository.deleteById(id);
     }

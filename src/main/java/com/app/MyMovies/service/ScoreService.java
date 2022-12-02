@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.app.MyMovies.service;
 
 import com.app.MyMovies.dto.ResponseDto;
@@ -12,10 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-/**
- *
- * @author Andres
- */
+
 @Service
 public class ScoreService {
 

@@ -16,10 +16,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- *
- * @author Andres
- */
 @Document("client")
 @Getter @Setter
 @AllArgsConstructor
@@ -35,17 +31,6 @@ public class Client implements Serializable {
     private String lastName;
     private String birthDate;
     private String phone;
-    
-    //@OneToMany(cascade={CascadeType.PERSIST},mappedBy="messa<ge")
-    //@JsonIgnoreProperties("message")
-//    @OneToMany(cascade={CascadeType.PERSIST},mappedBy="client")
-//    @JsonIgnoreProperties({"quadbike","client"})
-//    private List<Message> messages;
-//
-//    @OneToMany(cascade={CascadeType.PERSIST},mappedBy="client")
-//    @JsonIgnoreProperties("client")
-//    private List<Reservation> reservations;
-    
-    
+
     
 }

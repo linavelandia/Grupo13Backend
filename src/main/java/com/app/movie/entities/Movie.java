@@ -17,10 +17,6 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- *
- * @author Andres
- */
 @Document("movie")
 @Getter @Setter
 @AllArgsConstructor

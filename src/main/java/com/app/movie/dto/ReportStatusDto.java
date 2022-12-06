@@ -4,10 +4,7 @@
  */
 package com.app.movie.dto;
 
-/**
- *
- * @author Andres
- */
+
 public class ReportStatusDto {
     
     public Integer completed;

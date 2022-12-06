@@ -11,10 +11,6 @@ import com.app.movie.interfaces.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Andres
- */
 @Service
 public class CategoryService {
 

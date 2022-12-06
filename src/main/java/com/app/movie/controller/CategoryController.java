@@ -1,4 +1,3 @@
-
 package com.app.movie.controller;
 
 import com.app.movie.dto.ResponseDto;
@@ -17,10 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author Andres
- */
 @RestController
 @RequestMapping("/api/category")
 @CrossOrigin(origins = "*")

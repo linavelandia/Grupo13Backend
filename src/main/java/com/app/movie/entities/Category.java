@@ -7,8 +7,6 @@ package com.app.movie.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,10 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- *
- * @author Andres
- */
+
 @Document("category")
 @Getter @Setter
 @AllArgsConstructor
@@ -34,13 +29,6 @@ public class Category implements Serializable {
     private String name;
     private String description;
     private Integer ageMinimum;
-    
-    //@OneToMany(cascade={CascadeType.PERSIST},mappedBy="category")
-    //@JsonIgnoreProperties("category")
-    //private List<Quadbike> quadbikes;
-    
-    
-    
-    
+
     
 }

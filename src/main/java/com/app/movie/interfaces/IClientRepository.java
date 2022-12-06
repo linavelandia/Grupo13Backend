@@ -8,10 +8,6 @@ import com.app.movie.entities.Client;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.CrudRepository;
 
-/**
- *
- * @author Andres
- */
 public interface IClientRepository extends MongoRepository<Client, String> {
     
 }

@@ -1,22 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.app.movie.service;
 
 import com.app.movie.dto.ReportClientDto;
 import com.app.movie.entities.Client;
-
 import com.app.movie.repository.ClientRepository;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Andres
- */
 @Service
 public class ClientService {
 

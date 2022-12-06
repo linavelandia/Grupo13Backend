@@ -1,4 +1,3 @@
-
 package com.app.movie.controller;
 import com.app.movie.dto.ResponseDto;
 import com.app.movie.entities.Movie;

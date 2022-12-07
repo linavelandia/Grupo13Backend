@@ -1,10 +1,10 @@
 package com.app.movie.controller;
-
 import com.app.movie.dto.ResponseDto;
 import com.app.movie.entities.Category;
 import com.app.movie.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/category")
 @CrossOrigin(origins = "*")
 public class CategoryController {
-
     @Autowired
     CategoryService service;
 
@@ -29,11 +28,15 @@ public class CategoryController {
         Iterable<Category> response = service.get();
         return response;
     }
-
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseDto create(@RequestBody Category request) {
-        return service.create(request);
+    public ResponseEntity<ResponseDto> create(@RequestBody Category request){
+        ResponseDto responseDto = service.create(request);
+        ResponseEntity<ResponseDto> response = new ResponseEntity<>(responseDto,HttpStatus.CONFLICT);
+        if(responseDto.status.booleanValue()==true){
+            response = new ResponseEntity<>(responseDto,HttpStatus.CREATED);
+        }
+    return response;
     }
 
     @PutMapping("")

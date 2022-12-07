@@ -1,16 +1,16 @@
 package com.app.movie.service;
 
-
 import com.app.movie.dto.ResponseDto;
 import com.app.movie.entities.Score;
 import com.app.movie.repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+import java.util.List;
 import java.util.Optional;
-
 public class ScoreService {
 
+    private final String SCORE_REGISTERED="el puntaje ya estaba registrado mas de una vez";
+    private final String SCORE_SUCCESS="el puntaje se registró correctamente";
     @Autowired
     ScoreRepository repository;
 
@@ -19,16 +19,23 @@ public class ScoreService {
         return response;
     }
 
-    public ResponseDto create(Score request){
+    public ResponseDto create(Score request) {
         ResponseDto response = new ResponseDto();
-        if(request.getScore().intValue()<0 || request.getScore().intValue()>10){
+        List<Score> scores = repository.getByMovie(request.getMovie());
+        if(request.getScore().intValue()<0 || request.getScore().intValue()>5){
             response.status=false;
-            response.message="La calificacion enviada no esta dentro de los valores esperados";
+            response.message="la calificación no está dentro del rango esperados";
         }else{
-            repository.save(request);
-            response.status=true;
-            response.message="Calificación guardada correctamente";
-            response.id= request.getId();
+            if(scores.size()>0){
+                response.status=false;
+                response.message=SCORE_REGISTERED;
+            }
+            else{
+                repository.save(request);
+                response.status=true;
+                response.message=SCORE_SUCCESS;
+                response.id= request.getId();
+            }
         }
         return response;
     }

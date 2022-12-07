@@ -1,30 +1,22 @@
 package com.app.movie.service;
-
 import com.app.movie.dto.ResponseDto;
-import com.app.movie.entities.Client;
 import com.app.movie.entities.Movie;
-import com.app.movie.repository.ClientRepository;
 import com.app.movie.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class MovieService {
 
     private final String MOVIE_REGISTERED="La pelicula ya se ecnuentra registrada";
     private final String MOVIE_SUCCES="La pelicula se registro correctamente";
-
     @Autowired
     MovieRepository repository;
-
     public Iterable<Movie> get() {
         Iterable<Movie> response = repository.getAll();
         return response;
     }
-
     public ResponseDto create(Movie request) {
         ResponseDto response=new ResponseDto();
         List<Movie> movies = repository.getByName(request.getName());
@@ -40,7 +32,6 @@ public class MovieService {
         return response;
 
     }
-
     public Movie update(Movie movie) {
         Movie movieToUpdate = new Movie();
 
@@ -51,7 +42,6 @@ public class MovieService {
         }
         return movieToUpdate;
     }
-
     public Boolean delete(String id) {
         repository.deleteById(id);
         Boolean deleted = true;

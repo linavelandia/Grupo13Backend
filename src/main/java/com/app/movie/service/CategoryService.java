@@ -3,13 +3,15 @@ package com.app.movie.service;
 import com.app.movie.dto.ResponseDto;
 import com.app.movie.entities.Category;
 import com.app.movie.interfaces.ICategoryRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class CategoryService {
 
+    private final String CATEGORY_REGISTERED="esta categoria ya esta registrada";
+    private final String CATEGORY_SUCCESS="La categoria se registró correctamente";
     @Autowired
     ICategoryRepository repository;
 
@@ -19,15 +21,18 @@ public class CategoryService {
     }
 
     public ResponseDto create(Category request) {
-
-        Category newCategory = repository.save(request);
-
-        ResponseDto responseDto = new ResponseDto();
-        responseDto.status=true;
-        responseDto.message="Categoría creada correctamente";
-        responseDto.id= newCategory.getId();
-        return responseDto;
-
+        ResponseDto response = new ResponseDto();
+        List<Category> categories = repository.getByName(request.getName());
+        if(categories.size()>0){
+            response.status=false;
+            response.message=CATEGORY_REGISTERED;
+        }else{
+            repository.save(request);
+            response.status=true;
+            response.message=CATEGORY_SUCCESS;
+            response.id= request.getId();
+        }
+        return response;
     }
 
     public Category update(Category category) {

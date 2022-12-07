@@ -1,10 +1,12 @@
 package com.app.MyMovies.repository;
 
+import com.app.MyMovies.entities.Movie;
 import com.app.MyMovies.entities.Score;
 import com.app.MyMovies.interfaces.IScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -16,6 +18,10 @@ public class ScoreRepository {
     
     public Iterable<Score> getAll(){
         return repository.findAll();
+    }
+
+    public List<Score> getByMovie(Movie movie){
+        return repository.getScoresByMovie(movie);
     }
     
     public Optional<Score> findById(String id){

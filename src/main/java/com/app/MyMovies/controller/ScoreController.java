@@ -2,10 +2,12 @@
 package com.app.MyMovies.controller;
 
 import com.app.MyMovies.dto.ResponseDto;
+import com.app.MyMovies.entities.Movie;
 import com.app.MyMovies.entities.Score;
 import com.app.MyMovies.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,11 +25,15 @@ public class ScoreController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseDto create(@RequestBody Score request) {
-        if(request.getScore().intValue()>4){
-            System.out.println("mayor a 4");
+    public ResponseEntity<ResponseDto> create(@RequestBody Score request) {
+        ResponseDto responseDto = service.create(request);
+        ResponseEntity<ResponseDto> response = new ResponseEntity<>(responseDto,HttpStatus.CONFLICT);
+
+        if(responseDto.status.booleanValue()==true){
+            response = new ResponseEntity<>(responseDto,HttpStatus.CREATED);
         }
-        return service.create(request);
+
+        return response;
     }
 
     @PutMapping("")

@@ -1,8 +1,10 @@
 package com.app.MyMovies.repository;
 
 import com.app.MyMovies.entities.Client;
+import com.app.MyMovies.entities.Movie;
 import com.app.MyMovies.interfaces.IClientRepository;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,9 @@ public class ClientRepository {
     
     public Iterable<Client> getAll(){
         return repository.findAll();
+    }
+    public List<Client> getByEmail(String email){
+        return repository.getClientsByEmail(email);
     }
     
     public Optional<Client> findById(String id){

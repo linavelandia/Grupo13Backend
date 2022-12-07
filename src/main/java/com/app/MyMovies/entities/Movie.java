@@ -25,6 +25,9 @@ public class Movie implements Serializable {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private String id;
     private String name;
+    private Integer year;
+    private String duration;
+    private String description;
     private List<Category> categories;
     private List<Staff> staffList;
     

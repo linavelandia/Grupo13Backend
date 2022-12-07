@@ -2,10 +2,13 @@
 package com.app.MyMovies.controller;
 
 import com.app.MyMovies.dto.ReportClientDto;
+import com.app.MyMovies.dto.ResponseDto;
+import com.app.MyMovies.entities.Movie;
 import com.app.MyMovies.service.ClientService;
 import com.app.MyMovies.entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,9 +39,15 @@ public class ClientController {
     }
 
     @PostMapping("")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Client create(@RequestBody Client request) {
-        return service.create(request);
+    public ResponseEntity<ResponseDto> create(@RequestBody Client request) {
+        ResponseDto responseDto = service.create(request);
+        ResponseEntity<ResponseDto> response = new ResponseEntity<>(responseDto,HttpStatus.CONFLICT);
+
+        if(responseDto.status.booleanValue()==true){
+            response = new ResponseEntity<>(responseDto,HttpStatus.CREATED);
+        }
+
+        return response;
     }
 
     @PutMapping("")

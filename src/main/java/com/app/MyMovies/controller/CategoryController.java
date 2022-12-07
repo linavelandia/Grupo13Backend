@@ -2,9 +2,11 @@ package com.app.MyMovies.controller;
 
 import com.app.MyMovies.dto.ResponseDto;
 import com.app.MyMovies.entities.Category;
+import com.app.MyMovies.entities.Client;
 import com.app.MyMovies.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,10 +34,16 @@ public class CategoryController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseDto create(@RequestBody Category request) {
-        return service.create(request);
-    }
+    public ResponseEntity<ResponseDto> create(@RequestBody Category request) {
+        ResponseDto responseDto = service.create(request);
+        ResponseEntity<ResponseDto> response = new ResponseEntity<>(responseDto,HttpStatus.CONFLICT);
 
+        if(responseDto.status.booleanValue()==true){
+            response = new ResponseEntity<>(responseDto,HttpStatus.CREATED);
+        }
+
+        return response;
+    }
     @PutMapping("")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Category update(@RequestBody Category request) {

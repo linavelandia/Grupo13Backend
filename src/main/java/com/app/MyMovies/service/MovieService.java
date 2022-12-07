@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class MovieService {
 
-    private final String MOVIE_REGISTERED="La pelicula ya se encuentra registrada";
+    private final String MOVIE_REGISTERED="esta pelicula ya esta registrada";
     private final String MOVIE_SUCCESS="La pelicula se registró correctamente";
 
     @Autowired

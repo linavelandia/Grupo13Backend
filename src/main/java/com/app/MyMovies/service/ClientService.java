@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClientService {
 
-    private final String CLIENT_REGISTERED="el correo ya esta registrado  o falta ingresar un dato";
+    private final String CLIENT_REGISTERED="el correo ya esta registrado";
     private final String CLIENT_SUCCESS="el cliente  se registró correctamente";
     @Autowired
     ClientRepository repository;
